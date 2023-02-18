@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function App() {
+const App = () => {
+  const [pokemons, setPokemons] = useState([]);
+  const [search, setSearch] = useState(null);
+  const [showData, setshowData] = useState([]);
+  let timer;
+
+  const api = `https://pokeapi.co/api/v2/pokemon/?limit=10000`;
+  const fetchPoke = async () => {
+    const res = await axios.get(api);
+    setPokemons(res.data.results);
+  };
+
+  useEffect(() => {
+    fetchPoke();
+  }, []);
+
+  useEffect(() => {
+    if (search) {
+      timer = setTimeout(() => {
+        setshowData(
+          pokemons.filter((pokemon) => pokemon.name.includes(search))
+        );
+        console.log("this is timer");
+      }, 700);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [search]);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <input type="text" onChange={handleSearch} />
+      {showData &&
+        showData.map((pokemon) => (
+          <li style={{ listStyle: "number" }}>{pokemon.name}</li>
+        ))}
     </div>
   );
-}
+};
 
 export default App;
