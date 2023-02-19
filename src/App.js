@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import Navbar from "./components/Navbar/Navbar";
 import axios from "axios";
+import PokemonCard from "./components/PokemonCard/PokemonCard";
 
 const App = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -7,7 +9,7 @@ const App = () => {
   const [showData, setshowData] = useState([]);
   let timer;
 
-  const api = `https://pokeapi.co/api/v2/pokemon/?limit=10000`;
+  const api = `https://pokeapi.co/api/v2/pokemon/?limit=1008`;
   const fetchPoke = async () => {
     const res = await axios.get(api);
     setPokemons(res.data.results);
@@ -38,6 +40,7 @@ const App = () => {
 
   return (
     <div>
+      <Navbar />
       <input type="text" onChange={handleSearch} />
       {showData &&
         showData.map((pokemon) => (
