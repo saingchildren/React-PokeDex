@@ -1,9 +1,10 @@
 import { Children } from "react";
+import TypeNameEnum from "./TypeNameEnum";
 
 const { Text } = require("@chakra-ui/react");
 
 const ShowType = ({ type }) => {
-
+  const typeName = TypeNameEnum(type.name)
   const TypeEnum = Object.freeze({
     火: "#BD1D1D",
     水: "#1E43E0",
@@ -25,14 +26,15 @@ const ShowType = ({ type }) => {
     冰: "#4379AE",
   });
 
+
   const ShowStyle = {
-    backgroundColor: TypeEnum[type],
+    backgroundColor: TypeEnum[typeName],
     textAlign: "center",
     width: "45px",
     borderRadius: "0 10px 0 10px",
-  }
+  };
 
-  return <Text style={ShowStyle}>{type}</Text>;
+  return <Text style={ShowStyle}>{typeName}</Text>;
 };
 
 export default ShowType;
