@@ -1,13 +1,11 @@
-import Navbar from "./components/Navbar/Navbar";
-import Card from "./components/Pokemons/Card";
-import Show from "./components/Pokemons/Show";
+import Navbar from "./components/Navbar/";
+import ShowPokemon from "./components/ShowPokemon/";
 
 const App = () => {
   return (
     <>
       <Navbar />
-      <Card src="./images/1.svg" name="妙蛙種子" types={["草", "毒", "冰"]} />
-      <Show />
+      <ShowPokemon />
     </>
   );
 };
