@@ -10,7 +10,6 @@ const getPokemons = async (offset) => {
   );
 
   const pokemonList = Promise.all(pokemons);
-  console.log(pokemonList)
 
   return pokemonList;
 };

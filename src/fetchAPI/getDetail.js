@@ -13,7 +13,6 @@ const getDetail = async (pokemon) => {
       name = res.data.names[3].name;
     });
   } catch (e) {
-    console.log("error");
     return e;
   }
 

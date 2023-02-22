@@ -28,7 +28,6 @@ const ShowPokemon = () => {
   useEffect(() => {
     (async () => {
       const temp = await getPokemons(offset);
-      console.log(pokemonList.length);
       setPokemonList((prev) => [...prev, ...temp]);
     })();
   }, [offset]);
