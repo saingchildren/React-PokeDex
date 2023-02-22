@@ -1,11 +1,4 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  Image,
-  Text,
-  Flex,
-} from "@chakra-ui/react";
+import { Box, Card, CardBody, Image, Text, Flex } from "@chakra-ui/react";
 import ShowType from "../ShowType/index";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
@@ -13,6 +6,8 @@ import { forwardRef } from "react";
 
 const BoxStyle = {
   maxWidth: "150px",
+  background: "#2d3748",
+  borderRadius: "50%",
 };
 
 const Button = styled.button`
@@ -23,7 +18,7 @@ const PokemonCard = forwardRef((props, ref) => {
   const handleClick = () => {
     console.log("click");
   };
-  const { src, name, types } = props
+  const { src, name, types } = props;
 
   return (
     <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.5 }}>
