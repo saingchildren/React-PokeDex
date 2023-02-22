@@ -1,8 +1,7 @@
-import { Box, Card, CardBody, Image, Text, Flex } from "@chakra-ui/react";
+import { Box, Card, CardBody, Image, Text, Flex, forwardRef } from "@chakra-ui/react";
 import ShowType from "../ShowType/index";
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
-import { forwardRef } from "react";
 
 const BoxStyle = {
   maxWidth: "150px",
