@@ -37,7 +37,7 @@ const ShowPokemon = () => {
       animate={{ y: -20, opacity: 1 }}
       transition={{ ease: "easeInOut", duration: 1.5 }}
     >
-      <Box m="45px" mx={0}>
+      <Box p={5} m="45px" mx={0}>
         <Flex justify="center" wrap="wrap" gap={10}>
           {pokemonList.map((p, index) => {
             if (pokemonList.length === index + 1) {
