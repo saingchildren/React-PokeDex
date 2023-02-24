@@ -1,20 +1,45 @@
-import { Box, Flex, Container } from "@chakra-ui/react";
-import styled from "@emotion/styled";
-
-const Heading = styled.h1`
-  font-size: 2.5em;
-  color: red;
-  font-weight: bold;
-  font-style: italic;
-`;
+import {
+  Heading,
+  Box,
+  Flex,
+  Spacer,
+  useColorModeValue,
+  IconButton,
+} from "@chakra-ui/react";
+import ToggleColorMode from "../ToggleColorMode";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
   return (
-    <Box background="#2D2B37">
-      <Container centerContent>
-        <Heading>PokéDex</Heading>
-      </Container>
-    </Box>
+    <Flex
+      position="fixed"
+      w="100%"
+      align="center"
+      zIndex={1}
+      bg={useColorModeValue("#125E8A", "#2D2B37")}
+      boxShadow="dark-lg"
+      p={2}
+    >
+      <IconButton
+        icon={<HamburgerIcon />}
+        display="flex"
+        colorScheme={useColorModeValue("#125E8A", "#2D2B37")}
+        color={useColorModeValue("#000000", "#FFFFFF")}
+        size="lg"
+      />
+      <Spacer />
+      <Box>
+        <Heading
+          size="2xl"
+          fontStyle="italic"
+          color={useColorModeValue("#3399BB", "red")}
+        >
+          PokéDex
+        </Heading>
+      </Box>
+      <Spacer />
+      <ToggleColorMode />
+    </Flex>
   );
 };
 

@@ -6,20 +6,13 @@ import {
   Text,
   Flex,
   forwardRef,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import ShowType from "../ShowType/index";
-import styled from "@emotion/styled";
+import { Button } from "./style";
 import { motion } from "framer-motion";
 
 const PokemonCard = forwardRef((props, ref) => {
-  const Button = styled.button`
-    display: "flex";
-  `;
-
-  const CardStyle = {
-    background: "#2d3748",
-    color: "#FFFFFF",
-  }
   const handleClick = () => {
     console.log("click");
   };
@@ -28,9 +21,9 @@ const PokemonCard = forwardRef((props, ref) => {
   return (
     <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.5 }}>
       <Button onClick={handleClick}>
-        <Card {...CardStyle} alignItems="center">
+        <Card bg={useColorModeValue("#E8EBF7", "#2D3748")} alignItems="center">
           <CardBody>
-            <Image src={src} width="100px" height="130px" />
+            <Image src={src} width="130px" height="130px" />
             <Text textAlign="center" mt={4} ref={ref}>
               {name}
             </Text>
