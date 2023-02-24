@@ -7,16 +7,23 @@ import {
   Flex,
   forwardRef,
   useColorModeValue,
+  Modal,
 } from "@chakra-ui/react";
 import ShowType from "../ShowType/index";
 import { Button } from "./style";
 import { motion } from "framer-motion";
+import { useContextSelector } from "use-context-selector";
+import ModalContexts from "../../contexts/ModalContexts";
 
 const PokemonCard = forwardRef((props, ref) => {
-  const handleClick = () => {
-    console.log("click");
-  };
+
+  const onOpen = useContextSelector(ModalContexts, (item) => item.ModalOnOpen)
+
   const { src, name, types } = props;
+
+  const handleClick = () => {
+    onOpen()
+  }
 
   return (
     <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.5 }}>

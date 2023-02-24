@@ -8,8 +8,12 @@ import {
 } from "@chakra-ui/react";
 import ToggleColorMode from "../ToggleColorMode";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import SliderContexts from "../../contexts/SliderContexts";
+import { useContextSelector } from "use-context-selector";
 
 const Navbar = () => {
+  const onOpen = useContextSelector(SliderContexts, (item) => item.SliderOnOpen);
+
   return (
     <Flex
       position="fixed"
@@ -26,13 +30,14 @@ const Navbar = () => {
         colorScheme={useColorModeValue("#125E8A", "#2D2B37")}
         color={useColorModeValue("#000000", "#FFFFFF")}
         size="lg"
+        onClick={onOpen}
       />
       <Spacer />
       <Box>
         <Heading
           size="2xl"
           fontStyle="italic"
-          color={useColorModeValue("#3399BB", "red")}
+          color={useColorModeValue("#00b2ca", "red")}
         >
           PokéDex
         </Heading>
