@@ -4,9 +4,10 @@ import ShowPokemon from "./components/ShowPokemon/";
 import SliderBar from "./components/SliderBar";
 import SliderContexts from "./contexts/SliderContexts";
 import ModalContexts from "./contexts/ModalContexts";
-import DetailModal from "./components/DetailModal";
+import { useState } from "react";
 
 const App = () => {
+  const [ModalPokeData, setModalPokeData] = useState({});
   const {
     isOpen: SliderIsOpen,
     onOpen: SliderOnOpen,
@@ -32,11 +33,12 @@ const App = () => {
           ModalIsOpen: ModalIsOpen,
           ModalOnOpen: ModalOnOpen,
           ModalOnClose: ModalOnClose,
+          ModalPokeData: ModalPokeData,
+          setModalPokeData: setModalPokeData,
         }}
       >
         <Navbar />
         <Flex>
-          <DetailModal />
           <SliderBar />
           <ShowPokemon />
         </Flex>

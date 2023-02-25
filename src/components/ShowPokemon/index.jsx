@@ -3,6 +3,7 @@ import getPokemons from "../../fetchAPI/getPokemons";
 import PokemonCard from "../PokemonCard";
 import { Box, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import DetailModal from "../DetailModal";
 
 const ShowPokemon = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -48,6 +49,10 @@ const ShowPokemon = () => {
                   src={p.data.sprites.other.dream_world.front_default}
                   name={p.name}
                   types={p.data.types}
+                  height={p.data.height}
+                  weight={p.data.weight}
+                  abilities={p.data.abilities}
+                  stats={p.data.stats}
                 />
               );
             } else {
@@ -56,11 +61,16 @@ const ShowPokemon = () => {
                   src={p.data.sprites.other.dream_world.front_default}
                   name={p.name}
                   types={p.data.types}
+                  height={p.data.height}
+                  weight={p.data.weight}
+                  abilities={p.data.abilities}
+                  stats={p.data.stats}
                 />
               );
             }
           })}
         </Flex>
+        <DetailModal />
       </Box>
     </motion.div>
   );
