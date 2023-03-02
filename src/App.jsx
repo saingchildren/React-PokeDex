@@ -8,6 +8,7 @@ import { useState } from "react";
 
 const App = () => {
   const [ModalPokeData, setModalPokeData] = useState({});
+  const [searchName, setSearchName] = useState("");
   const {
     isOpen: SliderIsOpen,
     onOpen: SliderOnOpen,
@@ -26,6 +27,8 @@ const App = () => {
         SliderIsOpen: SliderIsOpen,
         SliderOnOpen: SliderOnOpen,
         SliderOnClose: SliderOnClose,
+        searchName: searchName,
+        setSearchName: setSearchName,
       }}
     >
       <ModalContexts.Provider

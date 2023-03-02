@@ -4,11 +4,20 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
+  Flex,
+  Image,
+  Heading,
+  Progress,
+  Box,
+  Text,
+  Divider,
 } from "@chakra-ui/react";
 import { useContextSelector } from "use-context-selector";
 import ModalContexts from "../../contexts/ModalContexts";
+import ShowType from "../ShowType";
 
 const DetailModal = () => {
+  const statsEnum = ["HP", "攻擊", "特攻", "防禦", "特防", "速度"];
   const ModalPokeData = useContextSelector(
     ModalContexts,
     (item) => item.ModalPokeData
@@ -26,8 +35,25 @@ const DetailModal = () => {
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{name}</ModalHeader>
-        <ModalBody>This is Body</ModalBody>
+        <ModalHeader textAlign="center">
+          <Heading>{name}</Heading>
+        </ModalHeader>
+        <Divider />
+        <ModalBody>
+          <Flex direction="row" align="center">
+            <Image src={src} ml={5} w="40%" h="200px" />
+            <Flex ml={20} direction="column">
+              {stats &&
+                stats.map((s, index) => {
+                  return (
+                    <Box>
+                      <Text>{`${statsEnum[index]} : ${s.base_stat}`}</Text>
+                    </Box>
+                  );
+                })}
+            </Flex>
+          </Flex>
+        </ModalBody>
       </ModalContent>
     </Modal>
   );
