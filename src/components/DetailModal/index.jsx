@@ -16,7 +16,7 @@ import { useContextSelector } from "use-context-selector";
 import ModalContexts from "../../contexts/ModalContexts";
 
 const DetailModal = () => {
-  const statsEnum = ["HP", "攻擊", "特攻", "防禦", "特防", "速度"];
+  const statsEnum = ["HP", "攻擊", "防禦", "特攻", "特防", "速度"];
   const ModalPokeData = useContextSelector(
     ModalContexts,
     (item) => item.ModalPokeData
