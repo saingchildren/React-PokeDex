@@ -14,7 +14,6 @@ import {
 } from "@chakra-ui/react";
 import { useContextSelector } from "use-context-selector";
 import ModalContexts from "../../contexts/ModalContexts";
-import ShowType from "../ShowType";
 
 const DetailModal = () => {
   const statsEnum = ["HP", "攻擊", "特攻", "防禦", "特防", "速度"];
@@ -29,7 +28,6 @@ const DetailModal = () => {
   );
 
   const { name, src, abilities, height, weight, stats, types } = ModalPokeData;
-  console.log(ModalPokeData);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>

@@ -4,9 +4,18 @@ import PokemonCard from "../PokemonCard";
 import { Box, Flex } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import DetailModal from "../DetailModal";
+import { useContextSelector } from "use-context-selector";
+import ShowPokemonContexts from "../../contexts/ShowPokemonContexts";
 
 const ShowPokemon = () => {
-  const [pokemonList, setPokemonList] = useState([]);
+  const pokemonList = useContextSelector(
+    ShowPokemonContexts,
+    (item) => item.pokemonList
+  );
+  const setPokemonList = useContextSelector(
+    ShowPokemonContexts,
+    (item) => item.setPokemonList
+  );
   const [offset, setOffset] = useState(0);
   const observer = useRef();
 
@@ -39,7 +48,7 @@ const ShowPokemon = () => {
       transition={{ ease: "easeInOut", duration: 1.5 }}
     >
       <Box p={2} mt="100px">
-        <Flex justify="center" wrap="wrap" gap={10}>
+        <Flex justify="center" wrap="wrap" gap={8}>
           {pokemonList.map((p, index) => {
             if (pokemonList.length === index + 1) {
               return (

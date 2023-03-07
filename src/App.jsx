@@ -1,12 +1,14 @@
-import { Flex, useDisclosure } from "@chakra-ui/react";
+import { Flex, Show, useDisclosure } from "@chakra-ui/react";
 import Navbar from "./components/Navbar/";
 import ShowPokemon from "./components/ShowPokemon/";
 import SliderBar from "./components/SliderBar";
 import SliderContexts from "./contexts/SliderContexts";
 import ModalContexts from "./contexts/ModalContexts";
+import ShowPokemonContexts from "./contexts/ShowPokemonContexts";
 import { useState } from "react";
 
 const App = () => {
+  const [pokemonList, setPokemonList] = useState([]);
   const [ModalPokeData, setModalPokeData] = useState({});
   const [searchName, setSearchName] = useState("");
   const {
@@ -22,31 +24,38 @@ const App = () => {
   } = useDisclosure();
 
   return (
-    <SliderContexts.Provider
+    <ShowPokemonContexts.Provider
       value={{
-        SliderIsOpen: SliderIsOpen,
-        SliderOnOpen: SliderOnOpen,
-        SliderOnClose: SliderOnClose,
-        searchName: searchName,
-        setSearchName: setSearchName,
+        pokemonList: pokemonList,
+        setPokemonList: setPokemonList,
       }}
     >
-      <ModalContexts.Provider
+      <SliderContexts.Provider
         value={{
-          ModalIsOpen: ModalIsOpen,
-          ModalOnOpen: ModalOnOpen,
-          ModalOnClose: ModalOnClose,
-          ModalPokeData: ModalPokeData,
-          setModalPokeData: setModalPokeData,
+          SliderIsOpen: SliderIsOpen,
+          SliderOnOpen: SliderOnOpen,
+          SliderOnClose: SliderOnClose,
+          searchName: searchName,
+          setSearchName: setSearchName,
         }}
       >
-        <Navbar />
-        <Flex>
-          <SliderBar />
-          <ShowPokemon />
-        </Flex>
-      </ModalContexts.Provider>
-    </SliderContexts.Provider>
+        <ModalContexts.Provider
+          value={{
+            ModalIsOpen: ModalIsOpen,
+            ModalOnOpen: ModalOnOpen,
+            ModalOnClose: ModalOnClose,
+            ModalPokeData: ModalPokeData,
+            setModalPokeData: setModalPokeData,
+          }}
+        >
+          <Navbar />
+          <Flex>
+            <SliderBar />
+            <ShowPokemon />
+          </Flex>
+        </ModalContexts.Provider>
+      </SliderContexts.Provider>
+    </ShowPokemonContexts.Provider>
   );
 };
 
